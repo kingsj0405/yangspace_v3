@@ -4,8 +4,9 @@
 *.pyc
 
 ## django
-settings.py
 *.log
+secret.py
+db.sqlite3
 
 ## pycharm
 .idea/
