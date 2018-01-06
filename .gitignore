@@ -1,0 +1,11 @@
+# YangSpace .gitignore file
+
+## python
+*.pyc
+
+## django
+settings.py
+*.log
+
+## pycharm
+.idea/
