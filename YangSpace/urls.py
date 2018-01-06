@@ -15,14 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.shortcuts import redirect
 
 import blog.views as blog_views
 
 urlpatterns = [
     # admin
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin', admin.site.urls),
     # blog
+    url(r'^blog', blog_views.main),
     url(r'^', blog_views.index),
-    url(r'^blog/', blog_views.main),
 ]

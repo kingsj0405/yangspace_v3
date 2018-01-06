@@ -6,4 +6,4 @@ def index(request):
 
 
 def main(request):
-    return render(request, 'main.html')
+    return render(request, 'blog/main.html')
