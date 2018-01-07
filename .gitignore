@@ -4,6 +4,7 @@
 *.pyc
 
 ## django
+*.mo
 *.log
 secret.py
 db.sqlite3
