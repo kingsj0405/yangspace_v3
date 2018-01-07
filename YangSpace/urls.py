@@ -20,8 +20,9 @@ import blog.views as blog_views
 
 urlpatterns = [
     # admin
-    url(r'^admin', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     # blog
-    url(r'^blog', blog_views.main),
+    url(r'^blog/page/(?P<page_title>[\w\-]+)/$', blog_views.page),
+    url(r'^blog/', blog_views.main),
     url(r'^', blog_views.index),
 ]
