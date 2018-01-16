@@ -1,0 +1,10 @@
+body {
+    padding-top: 50px;
+}
+.page-title {
+    text-align: center;
+}
+.page-content {
+    padding: 40px 15px;
+    text-align: center;
+}
