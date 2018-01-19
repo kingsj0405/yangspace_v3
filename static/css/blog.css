@@ -8,3 +8,10 @@ body {
     padding: 40px 15px;
     text-align: center;
 }
+
+a:hover {
+    text-decoration: none;
+}
+a:link {
+    text-decoration: none;
+}
