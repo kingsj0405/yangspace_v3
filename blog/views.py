@@ -11,6 +11,7 @@ def index(request):
 def main(request):
     return render(request, 'blog/main.html', {
         'title': _('YangSpace') + ' - ' + _('blog'),
+        'pages': Page.objects.all(),
     })
 
 
