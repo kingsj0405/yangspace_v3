@@ -15,9 +15,9 @@ def main(request):
     })
 
 
-def page(request, page_title=None):
+def page(request, page_url=None):
     if request.method == 'GET':
-        page = get_object_or_404(Page, title=page_title)
+        page = get_object_or_404(Page, url=page_url)
         return render(request, 'blog/page.html', {
             'title': _('YangSpace') + ' - ' + _('blog') + ' | ' + _(page.title),
             'page': page,

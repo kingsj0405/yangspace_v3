@@ -10,7 +10,7 @@
             <!-- TODO: other information for page -->
         </div>
         <div class="page-content">
-            {{ page.content }}
+            {{ page.content | safe }}
         </div>
     </div>
 {% endblock %}

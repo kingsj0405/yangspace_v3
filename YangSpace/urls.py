@@ -22,7 +22,7 @@ urlpatterns = [
     # admin
     url(r'^admin/', admin.site.urls),
     # blog
-    url(r'^blog/page/(?P<page_title>[\w\-]+)/$', blog_views.page, name='page'),
+    url(r'^blog/page/(?P<page_url>[\w\-]+)/$', blog_views.page, name='page'),
     url(r'^blog/', blog_views.main, name='main'),
     url(r'^', blog_views.index, name='index'),
 ]
