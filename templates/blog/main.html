@@ -13,26 +13,27 @@
             });
         });
     </script>
-    <div class="list-group list-group-root well">
-        {% recursetree pages %}
-            <div class="list-group-item">
-                <div class="panel-title" style="margin-left: {% widthratio node.level 1 20 %}px;">
-                    {% if not node.is_leaf_node %}
-                        <a data-toggle="collapse" href="#collapse-{{ node.url }}">
-                            <i class="glyphicon glyphicon-chevron-right"></i>
-                        </a>
-                    {% else %}
-                        <i class="glyphicon glyphicon-chevron-right"
-                           style="visibility: hidden;"></i>
-                    {% endif %}
-                    <a href="{% url 'page' page_url=node.url %}">{{ node.title }}</a>
+    <div class="container">
+        <div class="main-tree list-group list-group-root">
+            {% recursetree pages %}
+                <div class="list-group-item">
+                    <div class="panel-title" style="margin-left: {% widthratio node.level 1 20 %}px;">
+                        {% if not node.is_leaf_node %}
+                            <a data-toggle="collapse" href="#collapse-{{ node.url }}">
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                            </a>
+                        {% else %}
+                            <i class="glyphicon glyphicon-minus"></i>
+                        {% endif %}
+                        <a href="{% url 'page' page_url=node.url %}">{{ node.title }}</a>
+                    </div>
                 </div>
-            </div>
-            {% if not node.is_leaf_node %}
-                <div id="collapse-{{ node.url }}" class="list-gtoup collapse">
-                    {{ children }}
-                </div>
-            {% endif %}
-        {% endrecursetree %}
+                {% if not node.is_leaf_node %}
+                    <div id="collapse-{{ node.url }}" class="list-gtoup collapse">
+                        {{ children }}
+                    </div>
+                {% endif %}
+            {% endrecursetree %}
+        </div>
     </div>
 {% endblock %}

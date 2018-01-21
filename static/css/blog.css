@@ -1,17 +1,32 @@
+/* Base */
 body {
     padding-top: 50px;
 }
-.page-title {
-    text-align: center;
+
+.panel-title > a {
+    font-weight: bold;
+    padding-left: 5px;
 }
-.page-content {
-    padding: 40px 15px;
-    text-align: center;
+
+/* Main */
+.main-tree {
+    margin-top: 10px;
 }
 
 a:hover {
     text-decoration: none;
 }
+
 a:link {
     text-decoration: none;
+}
+
+/* Page */
+.page-title {
+    text-align: center;
+}
+
+.page-content {
+    padding: 40px 15px;
+    text-align: center;
 }
