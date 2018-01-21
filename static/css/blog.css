@@ -3,14 +3,18 @@ body {
     padding-top: 50px;
 }
 
-.panel-title > a.panel-title-content {
-    font-weight: bold;
-    padding-left: 5px;
+.nav > li.li-horizontal {
+    display: flex;
 }
 
 /* Main */
 .main-tree {
     margin-top: 10px;
+}
+
+.panel-title > a.panel-title-content {
+    font-weight: bold;
+    padding-left: 5px;
 }
 
 a:hover {
