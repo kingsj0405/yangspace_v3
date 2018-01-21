@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
 import blog.views as blog_views
 
 urlpatterns = [
     # admin
     url(r'^admin/', admin.site.urls),
+    # account
+    url(r'^accounts/login/$', auth_views.login, {'template_name': 'accounts/login.html'}, name='login'),
+    url(r'^accounts/logout/$', auth_views.logout, {'next_page': 'index'}, name='logout'),
     # blog
     url(r'^blog/page/(?P<page_url>[\w\-]+)/$', blog_views.page, name='page'),
     url(r'^blog/', blog_views.main, name='main'),
