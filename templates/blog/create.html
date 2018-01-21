@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+
+{% load i18n %}
+
+{% block header %}
+    <!-- SimpleMDE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form action="/page/" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title">
+                <small id="emailHelp" class="form-text text-muted">Do not use awkward character for url.</small>
+            </div>
+            <div class="form-group">
+                <label for="parent_title">Parent</label>
+                <input type="text" class="form-control" id="parent_title" disabled>
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea class="form-control" id="content"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+    <script>
+        var simplemed = new SimpleMDE({ element: document.getElementById('content') });
+    </script>
+{% endblock %}
