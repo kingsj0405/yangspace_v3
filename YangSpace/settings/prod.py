@@ -2,13 +2,17 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['yangspace.co.kr']
+ALLOWED_HOSTS = [
+    'localhost',
+    'yangspace.co.kr',
+]
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'name',
-        'USER': 'user',
-        'PASSWORD': 'password'
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+	'HOST': 'db',
+	'PORT': 5432,
     }
 }
