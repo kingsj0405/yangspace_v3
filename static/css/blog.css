@@ -1,6 +1,6 @@
 /* Base */
 body {
-    padding-top: 50px;
+    padding-top: 60px;
 }
 
 .nav > li.li-horizontal {
@@ -8,10 +8,6 @@ body {
 }
 
 /* Main */
-.main-tree {
-    margin-top: 10px;
-}
-
 .panel-title > a.panel-title-content {
     font-weight: bold;
     padding-left: 5px;

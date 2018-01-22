@@ -10,25 +10,27 @@
 
 {% block content %}
     <div class="container">
-        <form action="/page/" method="POST">
+        <form id="create_page_form" action="{% url 'page' %}" method="POST">
             {% csrf_token %}
             <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title">
-                <small id="emailHelp" class="form-text text-muted">Do not use awkward character for url.</small>
+                <label for="title">{% trans 'Title' %}</label>
+                <input type="text" class="form-control" id="title" name="title">
             </div>
             <div class="form-group">
-                <label for="parent_title">Parent</label>
-                <input type="text" class="form-control" id="parent_title" disabled>
+                <label for="parent_title">{% trans 'Parent' %}</label>
+                <input type="text" class="form-control" id="parent_title" name="parent_title" value="{{ parent_title }}"
+                       disabled>
             </div>
             <div class="form-group">
-                <label for="content">Content</label>
-                <textarea class="form-control" id="content"></textarea>
+                <label for="content">{% trans 'Content' %}</label>
+                <textarea class="form-control" id="content" name="content"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-default">
+                {% trans 'Create' %}
+            </button>
         </form>
     </div>
     <script>
-        var simplemed = new SimpleMDE({ element: document.getElementById('content') });
+        var simplemed = new SimpleMDE({element: document.getElementById('content')});
     </script>
 {% endblock %}
