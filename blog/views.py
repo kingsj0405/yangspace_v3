@@ -18,10 +18,11 @@ def main(request):
 
 
 @login_required(login_url='/accounts/login/')
-def create(request, parent_title=DEFAULT_PARENT_PAGE):
+def create(request, parent_url=''):
     if request.method == 'GET':
+        page = Page.objects.filter(url=parent_url).first()
         return render(request, 'blog/create.html', {
-            'parent_title': parent_title,
+            'parent_title': DEFAULT_PARENT_PAGE if not page else page.title,
         })
 
 

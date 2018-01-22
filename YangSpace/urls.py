@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^accounts/logout/$', auth_views.logout, {'next_page': 'index'}, name='logout'),
     # blog
     url(r'^blog/create/$', blog_views.create, name='create'),
-    url(r'^blog/create/(?P<parent_title>[\w\-]+)/$', blog_views.create, name='create'),
+    url(r'^blog/create/(?P<parent_url>[\w\-]+)/$', blog_views.create, name='create'),
     url(r'^blog/page/$', blog_views.page, name='page'),
     url(r'^blog/page/(?P<page_url>[\w\-]+)/$', blog_views.page, name='page'),
     url(r'^blog/', blog_views.main, name='main'),
