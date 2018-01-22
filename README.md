@@ -4,6 +4,20 @@
 
 Confluence like blog
 
+## Deploy
+
+### Reuiqrement
+
+Deploy requires [docker](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/), [docker-compose](https://docs.docker.com/compose/install/).
+
+### Step
+
+```bash
+cp YangSpace/settings/secret.py.template YangSpace/settings/secret.py
+# fill variables
+docker-compose up
+```
+
 ## I18N
 
 ### Requirement
