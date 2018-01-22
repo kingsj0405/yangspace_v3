@@ -10,7 +10,7 @@
 
 {% block content %}
     <div class="container">
-        <form id="create_page_form" action="{% url 'page' %}" method="POST">
+        <form id="create_page_form" action="{% url 'create' %}" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">{% trans 'Title' %}</label>

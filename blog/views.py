@@ -24,15 +24,6 @@ def create(request, parent_url=''):
         return render(request, 'blog/create.html', {
             'parent_title': DEFAULT_PARENT_PAGE if not page else page.title,
         })
-
-
-def page(request, page_url=None):
-    if request.method == 'GET':
-        page = get_object_or_404(Page, url=page_url)
-        return render(request, 'blog/page.html', {
-            'title': _('YangSpace') + ' - ' + _('blog') + ' | ' + _(page.title),
-            'page': page,
-        })
     elif request.method == 'POST':
         # make new page
         title = request.POST.get('title')
@@ -47,3 +38,22 @@ def page(request, page_url=None):
         # save new page and redirect to main
         new_page.save()
         return redirect('main')
+
+
+def read(request, page_url=''):
+    if request.method == 'GET':
+        page = get_object_or_404(Page, url=page_url)
+        return render(request, 'blog/read.html', {
+            'title': _('YangSpace') + ' - ' + _('blog') + ' | ' + _(page.title),
+            'page': page,
+        })
+
+
+@login_required(login_url='/accounts/login/')
+def update(request, parent_url=''):
+    return NotImplementedError
+
+
+@login_required(login_url='/accounts/login/')
+def delete(request, parent_url=''):
+    return NotImplementedError

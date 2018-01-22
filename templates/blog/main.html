@@ -25,7 +25,7 @@
                         {% else %}
                             <i class="glyphicon glyphicon-minus"></i>
                         {% endif %}
-                        <a href="{% url 'page' page_url=node.url %}" class="panel-title-content">{{ node.title }}</a>
+                        <a href="{% url 'read' page_url=node.url %}" class="panel-title-content">{{ node.title }}</a>
                     </div>
                 </div>
                 {% if not node.is_leaf_node %}

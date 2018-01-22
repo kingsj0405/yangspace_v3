@@ -42,6 +42,8 @@
                 {% if request.user.is_authenticated %}
                     {% if page %}
                         <li><a href="{% url 'create' parent_url=page.url %}">{% trans "Create" %}</a></li>
+                        <li><a href="{% url 'update' page_url=page.url %}">{% trans "Update" %}</a></li>
+                        <li><a href="{% url 'delete' page_url=page.url %}">{% trans "Delete" %}</a></li>
                     {% else %}
                         <li><a href="{% url 'create' %}">{% trans "Create" %}</a></li>
                     {% endif %}
