@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-07 15:15+0900\n"
+"POT-Creation-Date: 2018-01-22 05:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: .\YangSpace\settings\base.py:107
+#: .\YangSpace\settings\base.py:108
 msgid "Korean"
 msgstr "한국어"
 
-#: .\YangSpace\settings\base.py:108
+#: .\YangSpace\settings\base.py:109
 msgid "English"
 msgstr "영어"
 
-#: .\blog\views.py:11
+#: .\blog\constants.py:3 .\templates\blog\base.html:41
+msgid "Main"
+msgstr "대문"
+
+#: .\blog\views.py:15 .\blog\views.py:49 .\templates\blog\base.html:37
 msgid "YangSpace"
 msgstr "YangSpace"
 
-#: .\blog\views.py:11
+#: .\blog\views.py:15 .\blog\views.py:49
 msgid "blog"
 msgstr "블로그"
 
-#: .\templates\blog\main.html:7
-msgid "Hello, World!"
-msgstr "안녕, 세상아!"
+#: .\templates\blog\base.html:44 .\templates\blog\base.html:48
+#: .\templates\blog\create.html:29
+msgid "Create"
+msgstr "만들기"
+
+#: .\templates\blog\base.html:45 .\templates\blog\update.html:25
+msgid "Update"
+msgstr "고치기"
+
+#: .\templates\blog\base.html:46
+msgid "Delete"
+msgstr "없애기"
+
+#: .\templates\blog\base.html:66
+msgid "Logout"
+msgstr "로그아웃"
+
+#: .\templates\blog\base.html:68
+msgid "Login"
+msgstr "로그인"
+
+#: .\templates\blog\create.html:16 .\templates\blog\update.html:17
+msgid "Title"
+msgstr "제목"
+
+#: .\templates\blog\create.html:20
+msgid "Parent"
+msgstr "상위항목"
+
+#: .\templates\blog\create.html:25 .\templates\blog\update.html:21
+msgid "Content"
+msgstr "내용"
+
+#~ msgid "Hello, World!"
+#~ msgstr "안녕, 세상아!"
