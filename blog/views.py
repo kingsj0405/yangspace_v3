@@ -35,13 +35,15 @@ def create(request, parent_url=''):
             parent_page = Page.objects.filter(title=parent_title).first()
             if parent_page:
                 new_page.parent = parent_page
-        # save new page and redirect to main
+        # save new page and redirect to created page
         new_page.save()
+        return redirect('read', page_url=new_page.url)
+
+
+def read(request, page_url=DEFAULT_PARENT_PAGE):
+    if page_url == DEFAULT_PARENT_PAGE:
         return redirect('main')
-
-
-def read(request, page_url=''):
-    if request.method == 'GET':
+    elif request.method == 'GET':
         page = get_object_or_404(Page, url=page_url)
         return render(request, 'blog/read.html', {
             'title': _('YangSpace') + ' - ' + _('blog') + ' | ' + _(page.title),
@@ -50,10 +52,26 @@ def read(request, page_url=''):
 
 
 @login_required(login_url='/accounts/login/')
-def update(request, parent_url=''):
-    return NotImplementedError
+def update(request, page_url=''):
+    if request.method == 'GET':
+        page = Page.objects.filter(url=page_url).first()
+        return render(request, 'blog/update.html', {
+            'page': page,
+        })
+    elif request.method == 'POST':
+        url = request.POST.get('url')
+        page = Page.objects.filter(url=url).first()
+        # update page
+        page.title = request.POST.get('title')
+        page.content = request.POST.get('content')
+        page.save()
+        return redirect('read', page_url=page.url)
 
 
 @login_required(login_url='/accounts/login/')
-def delete(request, parent_url=''):
-    return NotImplementedError
+def delete(request, page_url=''):
+    if request.method == 'GET':
+        page = Page.objects.filter(url=page_url).first()
+        parent_url = DEFAULT_PARENT_PAGE if not page.parent else page.parent.url
+        page.delete()
+        return redirect('read', page_url=parent_url)

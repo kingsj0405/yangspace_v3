@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+{% load i18n %}
+
+{% block header %}
+    <!-- SimpleMDE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form id="create_page_form" action="{% url 'update' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="url" value="{{ page.url }}"/>
+            <div class="form-group">
+                <label for="title">{% trans 'Title' %}</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ page.title }}">
+            </div>
+            <div class="form-group">
+                <label for="content">{% trans 'Content' %}</label>
+                <textarea class="form-control" id="content" name="content">{{ page.content }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-default">
+                {% trans 'Update' %}
+            </button>
+        </form>
+    </div>
+    <script>
+        var simplemed = new SimpleMDE({element: document.getElementById('content')});
+    </script>
+{% endblock %}
