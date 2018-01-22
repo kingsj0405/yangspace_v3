@@ -12,7 +12,6 @@ def index(request):
 
 def main(request):
     return render(request, 'blog/main.html', {
-        'title': _('YangSpace') + ' - ' + _('blog'),
         'pages': Page.objects.all(),
     })
 
@@ -46,7 +45,6 @@ def read(request, page_url=DEFAULT_PARENT_PAGE):
     elif request.method == 'GET':
         page = get_object_or_404(Page, url=page_url)
         return render(request, 'blog/read.html', {
-            'title': _('YangSpace') + ' - ' + _('blog') + ' | ' + _(page.title),
             'page': page,
         })
 
