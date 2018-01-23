@@ -22,14 +22,16 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="page-title">
-            <h1>{{ page.title }}</h1>
-            <hr>
-            <!-- TODO: other information for page -->
-        </div>
-        <div class="page-content">
-            {{ page.content | safe }}
+    <div class="row">
+        <div class="page-box col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+            <div class="page-title">
+                <h1>{{ page.title }}</h1>
+                <hr>
+                <!-- TODO: other information for page -->
+            </div>
+            <div class="page-content">
+                {{ page.content | safe }}
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -1,6 +1,14 @@
 /* Base */
 body {
     padding-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #DDDDDD;
+}
+
+.nav {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .nav > li.li-horizontal {
@@ -22,11 +30,13 @@ a:link {
 }
 
 /* Page */
-.page-title {
-    text-align: center;
+.page-box {
+    background: #FFFFFF;
+    border: #AAAAAA 1px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.page-content {
-    padding: 40px 15px;
+.page-title {
     text-align: center;
 }
