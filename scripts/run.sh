@@ -6,5 +6,7 @@ python manage.py makemigrations
 python manage.py migrate
 # i18n
 python manage.py compilemessages
+python manage.py collectstatic --noinput
 # runserver
-python manage.py runserver 0.0.0.0:8000
+export DJANGO_SETTINGS_MODULE=YangSpace.settings.prod 
+gunicorn YangSpace.wsgi -b 0.0.0.0:8000

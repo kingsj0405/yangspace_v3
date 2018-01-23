@@ -3,8 +3,7 @@ from .base import *
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'localhost',
-    'yangspace.co.kr',
+    'web',
 ]
 
 DATABASES = {

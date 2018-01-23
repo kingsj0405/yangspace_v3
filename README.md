@@ -4,7 +4,7 @@
 
 Confluence like blog
 
-## Deploy
+## Run for Production
 
 ### Reuiqrement
 
@@ -15,7 +15,13 @@ Deploy requires [docker](https://docs.docker.com/engine/installation/linux/docke
 ```bash
 cp YangSpace/settings/secret.py.template YangSpace/settings/secret.py
 # fill variables
-docker-compose up
+docker-compose up --build
+```
+
+## Development
+
+```bash
+bash scripts/run.sh
 ```
 
 ## I18N

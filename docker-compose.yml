@@ -8,9 +8,20 @@ services:
     command: bash scripts/run.sh 
     volumes:
       - .:/YangSpace
-    ports:
-      - "8000:8000"
+      - /static:/static
+    expose:
+      - "8000"
     depends_on:
       - db
     environment:
-        SETTING_CHOICE: prod
+      SETTING_CHOICE: prod
+  nginx:
+    image: nginx
+    ports:
+      - "80:8000"
+    volumes:
+      - .:/YangSpace
+      - ./config/nginx/:/etc/nginx/conf.d
+      - /static:/static
+    depends_on:
+      - web
