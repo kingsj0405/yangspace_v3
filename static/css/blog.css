@@ -1,0 +1,42 @@
+/* Base */
+body {
+    padding-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #DDDDDD;
+}
+
+.nav {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.nav > li.li-horizontal {
+    display: flex;
+}
+
+/* Main */
+.panel-title > a.panel-title-content {
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+/* Page */
+.page-box {
+    background: #FFFFFF;
+    border: #AAAAAA 1px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.page-title {
+    text-align: center;
+}

@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+
+{% load i18n %}
+
+{% block title %}
+    {% trans "YangSpace" %} - {% trans "Blog" %} | {{ page.title }}
+{% endblock %}
+
+{% block header %}
+    <!-- Showdown -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.4/showdown.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var converter = new showdown.Converter(),
+                text = "{{ page.content | escapejs }}",
+                html = converter.makeHtml(text);
+            console.log(text);
+            console.log(html);
+            $('.page-content').html(html);
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="page-box col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+            <div class="page-title">
+                <h1>{{ page.title }}</h1>
+                <hr>
+                <!-- TODO: other information for page -->
+            </div>
+            <div class="page-content">
+                {{ page.content | safe }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

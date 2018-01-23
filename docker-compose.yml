@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+  web:
+    build: .
+    command: bash scripts/run.sh 
+    volumes:
+      - .:/YangSpace
+      - /static:/static
+    expose:
+      - "8000"
+    depends_on:
+      - db
+    environment:
+      SETTING_CHOICE: prod
+  nginx:
+    image: nginx
+    ports:
+      - "80:8000"
+    volumes:
+      - .:/YangSpace
+      - ./config/nginx/:/etc/nginx/conf.d
+      - /static:/static
+    depends_on:
+      - web

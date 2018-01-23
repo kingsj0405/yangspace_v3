@@ -1,0 +1,14 @@
+# YangSpace .gitignore file
+
+## python
+*.pyc
+
+## django
+*.mo
+*.log
+secret.py
+db.sqlite3
+
+## pycharm
+.idea/
+venv/
