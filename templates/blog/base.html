@@ -11,19 +11,15 @@
     </title>
     <link rel="shortcut icon" href="{% static 'img/sheepthreebell.png' %}"/>
     <!-- jQuery Google CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'lib/jquery.min.js' %}"></script>
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'lib/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'lib/bootstrap-theme.min.css' %}"/>
+    <script src="{% static 'lib/bootstrap.min.js' %}"></script>
     <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/04fd97554b.js"></script>
+    <link rel="stylesheet" href="{% static 'lib\font-awesome.min.css' %}"/>
     <!-- Showdown -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.4/showdown.min.js"></script>
+    <script src="{% static 'lib/showdown.min.js' %}"></script>
     <!-- Custom static File -->
     <link rel="stylesheet" href="{% static 'css/blog.css' %}"/>
     <script src="{% static 'js/blog.js' %}"></script>
