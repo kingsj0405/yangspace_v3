@@ -15,6 +15,12 @@ body {
     display: flex;
 }
 
+table, th, td {
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 /* Main */
 .panel-title > a.panel-title-content {
     font-weight: bold;
