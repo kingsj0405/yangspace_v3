@@ -7,15 +7,12 @@
 {% endblock %}
 
 {% block header %}
-    <!-- Showdown -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.4/showdown.min.js"></script>
     <script>
         $(document).ready(function () {
+            showdown.setFlavor('github');
             var converter = new showdown.Converter(),
                 text = "{{ page.content | escapejs }}",
                 html = converter.makeHtml(text);
-            console.log(text);
-            console.log(html);
             $('.page-content').html(html);
         });
     </script>
