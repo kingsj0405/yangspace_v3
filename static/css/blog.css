@@ -46,3 +46,15 @@ a:link {
 .page-title {
     text-align: center;
 }
+
+#content {
+    height: calc(100vh - 300px);
+}
+
+#content-viewer {
+    padding: 10px;
+    height: calc(100vh - 300px);
+    overflow: scroll;
+    border: 1px solid black;
+    outline: none;
+}
