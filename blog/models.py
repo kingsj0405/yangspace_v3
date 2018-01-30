@@ -1,9 +1,11 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
+import reversion
 
 from re import sub
 
 
+@reversion.register()
 class Page(MPTTModel):
     title = models.CharField(max_length=100)
     url = models.CharField(max_length=100, blank=True, default='')
