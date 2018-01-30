@@ -1,4 +1,4 @@
-# YangSpace
+# YangSpace v0.2.0
 [![Build Status](https://travis-ci.org/kingsj0405/YangSpace.svg?branch=master)](https://travis-ci.org/kingsj0405/YangSpace)
 
 ## Summary
@@ -7,6 +7,14 @@ Confluence-like blog.
 
 Visit [yangspace.co.kr](http://yangspace.co.kr)
 
+### Main Feature
+
+- CRUD of Page
+- Page history and revert
+- Page preview when writing
+- Page Tree on Main
+- Login/Logout for administrator
+
 ## Release
 
 ### Things to do on release branch
@@ -14,7 +22,7 @@ Visit [yangspace.co.kr](http://yangspace.co.kr)
 - Fix Version
     - [README.md](README.md)
 - Translating
-    - Check [I18N](#I18N)
+    - Check [I18N](#i18n)
 
 ### Run for Production
 
@@ -52,7 +60,7 @@ python manage.py makemessages --all -i venv
 python manage.py compilemessages --exclude=venv
 ```
 
-### Static Library
+#### Static Library
 
 Followings are downloaded in `static/lib`.
 - [Bootstrap 3.3.7](https://getbootstrap.com/docs/3.3/)
@@ -60,7 +68,7 @@ Followings are downloaded in `static/lib`.
 - [jQuery](https://jquery.com/) 3.2.1
 - [showdown](https://github.com/showdownjs/showdown) 1.8.4
 
-### Django Pakcage
+#### Django Pakcage
 
 - [django-mptt](https://github.com/django-mptt/django-mptt)
 - [django-reversion](https://github.com/etianen/django-reversion)
