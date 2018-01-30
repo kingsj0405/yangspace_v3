@@ -7,15 +7,24 @@ Confluence-like blog.
 
 Visit [yangspace.co.kr](http://yangspace.co.kr)
 
-## Run for Production
+## Release
 
-### Reuiqrement
+### Things to do on release branch
+
+- Fix Version
+    - [README.md](README.md)
+- Translating
+    - Check [I18N](#I18N)
+
+### Run for Production
+
+#### Reuiqrement
 
 Deploy requires following:
 - [Docker version](https://www.docker.com/) 17.12.0-ce, build c97c6d6
 - [docker-compose](https://docs.docker.com/compose/) version 1.18.0, build 8dd22a96
 
-### Step
+#### Step
 
 ```bash
 cp YangSpace/settings/secret.py.template YangSpace/settings/secret.py
