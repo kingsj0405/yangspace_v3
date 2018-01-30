@@ -15,7 +15,7 @@ class Page(MPTTModel):
                             on_delete=models.SET_NULL)
 
     def save(self, *args, **kwargs):
-        self.url = sub('[^\w\-]+', '', sub('\s+', '-', self.title.lower()))
+        self.url = sub('[^\w\-]+', '', sub('\s+', '-', self.title.lower())) + '_' + str(self.id)
         super().save(*args, **kwargs)
 
     class MPTTMeta:
