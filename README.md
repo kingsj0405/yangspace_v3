@@ -1,4 +1,5 @@
 # YangSpace
+[![Build Status](https://travis-ci.org/kingsj0405/YangSpace.svg?branch=master)](https://travis-ci.org/kingsj0405/YangSpace)
 
 ## Summary
 
