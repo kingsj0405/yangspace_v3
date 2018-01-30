@@ -51,3 +51,7 @@ Followings are downloaded in `static/lib`.
 - [jQuery](https://jquery.com/) 3.2.1
 - [showdown](https://github.com/showdownjs/showdown) 1.8.4
 
+### Django Pakcage
+
+- [django-mptt](https://github.com/django-mptt/django-mptt)
+- [django-reversion](https://github.com/etianen/django-reversion)
