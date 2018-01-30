@@ -1,5 +1,7 @@
 from .base import *
 
+from .secret import *
+
 DEBUG = False
 
 ALLOWED_HOSTS = [
@@ -11,7 +13,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-	'HOST': 'db',
-	'PORT': 5432,
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
