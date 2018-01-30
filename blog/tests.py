@@ -9,9 +9,9 @@ class TestTest(TestCase):
 
 class TestPage(TestCase):
     space_title = 'Hello World'
-    space_url = 'hello-world'
+    space_url = 'hello-world_None'
     blanket_title = 'Hello World(1)'
-    blanket_url = 'hello-world1'
+    blanket_url = 'hello-world1_None'
     dummy_content = 'Content'
 
     def setUp(self):
