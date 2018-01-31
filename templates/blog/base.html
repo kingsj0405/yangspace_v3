@@ -5,31 +5,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         {% block title %}
         {% endblock %}
     </title>
+    <!-- Library -->
     <link rel="shortcut icon" href="{% static 'img/sheepthreebell.png' %}"/>
-    <!-- jQuery Google CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/04fd97554b.js"></script>
-    <!-- Custom CSS File -->
+    <link rel="stylesheet" href="{% static 'lib/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'lib/bootstrap-theme.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'lib\font-awesome.min.css' %}"/>
+    <script src="{% static 'lib/jquery.min.js' %}"></script>
+    <script src="{% static 'lib/bootstrap.min.js' %}"></script>
+    <script src="{% static 'lib/showdown.min.js' %}"></script>
+    <!-- Custom static File -->
     <link rel="stylesheet" href="{% static 'css/blog.css' %}"/>
+    <script src="{% static 'js/blog.js' %}"></script>
     {% block header %}
     {% endblock %}
 </head>
 <body>
-<div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                     aria-expanded="false" aria-controls="navbar">
@@ -47,6 +45,7 @@
                         <li><a href="{% url 'create' parent_url=page.url %}">{% trans "Create" %}</a></li>
                         <li><a href="{% url 'update' page_url=page.url %}">{% trans "Update" %}</a></li>
                         <li><a href="{% url 'delete' page_url=page.url %}">{% trans "Delete" %}</a></li>
+                        <li><a href="/admin/blog/page/{{ page.id }}/history/">{% trans "History" %}</a></li>
                     {% else %}
                         <li><a href="{% url 'create' %}">{% trans "Create" %}</a></li>
                     {% endif %}
@@ -73,7 +72,9 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+<div class="container">
     {% block content %}
     {% endblock %}
 </div>

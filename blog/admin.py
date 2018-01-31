@@ -1,11 +1,10 @@
 from django.contrib import admin
 from mptt.admin import MPTTModelAdmin
+from reversion.admin import VersionAdmin
 
 from .models import *
 
 
-class PageMPTTModelAdmin(MPTTModelAdmin):
+@admin.register(Page)
+class PageAdmin(MPTTModelAdmin, VersionAdmin):
     mptt_level_indent = 20
-
-
-admin.site.register(Page, PageMPTTModelAdmin)

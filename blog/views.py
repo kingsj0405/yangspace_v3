@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext as _
+import reversion
 
 from .constants import *
 from .models import Page
@@ -35,7 +36,10 @@ def create(request, parent_url=''):
             if parent_page:
                 new_page.parent = parent_page
         # save new page and redirect to created page
-        new_page.save()
+        with reversion.create_revision():
+            new_page.save()
+            reversion.set_user(request.user)
+            reversion.set_comment(_("Create Page"))
         return redirect('read', page_url=new_page.url)
 
 
@@ -62,7 +66,10 @@ def update(request, page_url=''):
         # update page
         page.title = request.POST.get('title')
         page.content = request.POST.get('content')
-        page.save()
+        with reversion.create_revision():
+            page.save()
+            reversion.set_user(request.user)
+            reversion.set_comment(_("Update Page"))
         return redirect('read', page_url=page.url)
 
 

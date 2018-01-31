@@ -1,9 +1,11 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
+import reversion
 
 from re import sub
 
 
+@reversion.register()
 class Page(MPTTModel):
     title = models.CharField(max_length=100)
     url = models.CharField(max_length=100, blank=True, default='')
@@ -15,7 +17,7 @@ class Page(MPTTModel):
                             on_delete=models.SET_NULL)
 
     def save(self, *args, **kwargs):
-        self.url = sub('[^\w\-]+', '', sub('\s+', '-', self.title.lower()))
+        self.url = sub('[^\w\-]+', '', sub('\s+', '-', self.title.lower())) + '_' + str(self.id)
         super().save(*args, **kwargs)
 
     class MPTTMeta:
