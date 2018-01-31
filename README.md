@@ -1,4 +1,4 @@
-# YangSpace
+# YangSpace v0.2.0
 [![Build Status](https://travis-ci.org/kingsj0405/YangSpace.svg?branch=master)](https://travis-ci.org/kingsj0405/YangSpace)
 
 ## Summary
@@ -7,6 +7,14 @@ Confluence-like blog.
 
 Visit [yangspace.co.kr](http://yangspace.co.kr)
 
+### Main Feature
+
+- CRUD of Page
+- Page history and revert
+- Page preview when writing
+- Page Tree on Main
+- Login/Logout for administrator
+
 ## Release
 
 ### Things to do on release branch
@@ -14,7 +22,7 @@ Visit [yangspace.co.kr](http://yangspace.co.kr)
 - Fix Version
     - [README.md](README.md)
 - Translating
-    - Check [I18N](#I18N)
+    - Check [I18N](#i18n)
 
 ### Run for Production
 
@@ -24,12 +32,20 @@ Deploy requires following:
 - [Docker version](https://www.docker.com/) 17.12.0-ce, build c97c6d6
 - [docker-compose](https://docs.docker.com/compose/) version 1.18.0, build 8dd22a96
 
+Backup data if you have.
+```bash
+# this file should moved to data/dump.json
+docker exec -t $WEB_CONTAINER python manage.py dump > dump_`date +%d-%m-%Y"_"%H_%M_%S`.json
+```
+
 #### Step
 
 ```bash
 cp YangSpace/settings/secret.py.template YangSpace/settings/secret.py
 # fill variables
 docker-compose up --build
+# Create super user if you need
+docker exec -t $WEB_CONTAINER python manage.py createsuperuser
 ```
 
 ## Development
@@ -52,7 +68,7 @@ python manage.py makemessages --all -i venv
 python manage.py compilemessages --exclude=venv
 ```
 
-### Static Library
+#### Static Library
 
 Followings are downloaded in `static/lib`.
 - [Bootstrap 3.3.7](https://getbootstrap.com/docs/3.3/)
@@ -60,7 +76,8 @@ Followings are downloaded in `static/lib`.
 - [jQuery](https://jquery.com/) 3.2.1
 - [showdown](https://github.com/showdownjs/showdown) 1.8.4
 
-### Django Pakcage
+#### Django Pakcage
 
 - [django-mptt](https://github.com/django-mptt/django-mptt)
 - [django-reversion](https://github.com/etianen/django-reversion)
+- [django-extensions](https://github.com/django-extensions/django-extensions)

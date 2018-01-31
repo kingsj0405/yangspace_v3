@@ -1,7 +1,10 @@
 Django==2.0.1
+django-extensions==1.9.9
 django-js-asset==1.0.0
 django-mptt==0.9.0
 django-reversion==2.0.13
 gunicorn==19.7.1
 psycopg2==2.7.3.2
 pytz==2017.3
+six==1.11.0
+typing==3.6.4
