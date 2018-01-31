@@ -32,12 +32,20 @@ Deploy requires following:
 - [Docker version](https://www.docker.com/) 17.12.0-ce, build c97c6d6
 - [docker-compose](https://docs.docker.com/compose/) version 1.18.0, build 8dd22a96
 
+Backup data if you have.
+```bash
+# this file should moved to data/dump.json
+docker exec -t $WEB_CONTAINER python manage.py dump > dump_`date +%d-%m-%Y"_"%H_%M_%S`.json
+```
+
 #### Step
 
 ```bash
 cp YangSpace/settings/secret.py.template YangSpace/settings/secret.py
 # fill variables
 docker-compose up --build
+# Create super user if you need
+docker exec -t $WEB_CONTAINER python manage.py createsuperuser
 ```
 
 ## Development
@@ -72,3 +80,4 @@ Followings are downloaded in `static/lib`.
 
 - [django-mptt](https://github.com/django-mptt/django-mptt)
 - [django-reversion](https://github.com/etianen/django-reversion)
+- [django-extensions](https://github.com/django-extensions/django-extensions)
