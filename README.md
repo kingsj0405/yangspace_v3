@@ -38,6 +38,15 @@ Backup data if you have.
 docker exec -t $WEB_CONTAINER python manage.py dump > dump_`date +%d-%m-%Y"_"%H_%M_%S`.json
 ```
 
+#### Backup
+
+In ubuntu you need to run following commands
+
+```bash
+sudo cp config/crontab/crontab etc/crontab
+sudo service cron start
+```
+
 #### Step
 
 ```bash
