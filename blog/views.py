@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext as _
+from django_ajax.decorators import ajax
 import reversion
 
 from .constants import *
@@ -136,3 +137,14 @@ def server_backup(request):
     except CalledProcessError:
         messages.error(request, _('Backup failure. Check debug log for more information.'))
     return redirect('main')
+
+
+@ajax
+def api_page(request):
+    if request.method == 'GET':
+        page_id = request.GET['page_id']
+        page = get_object_or_404(Page, id=page_id)
+        return {
+            'title': page.title,
+            'content': page.content,
+        }

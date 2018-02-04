@@ -87,6 +87,7 @@ Followings are downloaded in `static/lib`.
 
 #### Django Pakcage
 
+- [django-ajax](https://github.com/yceruto/django-ajax)
 - [django-mptt](https://github.com/django-mptt/django-mptt)
 - [django-reversion](https://github.com/etianen/django-reversion)
 - [django-extensions](https://github.com/django-extensions/django-extensions)

@@ -1,4 +1,4 @@
-// Global Variable
+// Markdown Editor
 var editor_id = 'content',
     viewer_id = 'content-viewer';
 var $editor, $viewer;
@@ -41,6 +41,25 @@ function render_editor(e) {
         $editor.show();
         $editor.focus();
     }
+}
+
+// Page ajax
+function read_page(page_id) {
+    $.ajax({
+        url: "/api/v1/page/read/",
+        type: "get",
+        data: {
+            page_id: page_id
+        },
+        success: function (result) {
+            var data = result.content;
+            $('.page-title').html(data.title);
+            var converter = new showdown.Converter(),
+                text = data.content,
+                html = converter.makeHtml(text);
+            $('.page-content').html(html);
+        }
+    });
 }
 
 $(document).ready(function () {
