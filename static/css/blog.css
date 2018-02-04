@@ -21,10 +21,21 @@ table, th, td {
     padding-right: 10px;
 }
 
-/* Main */
+/* Tree */
+.panel-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 25px;
+}
+
 .panel-title > a.panel-title-content {
     font-weight: bold;
     padding-left: 5px;
+}
+
+.selected {
+    background: #FFEEEE;
 }
 
 a:hover {
