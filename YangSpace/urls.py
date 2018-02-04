@@ -22,6 +22,8 @@ import blog.views as blog_views
 urlpatterns = [
     # admin
     url(r'^admin/', admin.site.urls),
+    # api
+    url(r'^api/v1/page/read/$', blog_views.api_page, name='api-page'),
     # account
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'accounts/login.html'}, name='login'),
     url(r'^accounts/logout/$', auth_views.logout, {'next_page': 'index'}, name='logout'),
