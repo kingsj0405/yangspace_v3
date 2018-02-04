@@ -58,6 +58,7 @@ def read(request, page_url=DEFAULT_PARENT_PAGE):
         page = get_object_or_404(Page, url=page_url)
         return render(request, 'blog/read.html', {
             'page': page,
+            'pages': Page.objects.all(),
         })
 
 
