@@ -138,23 +138,19 @@ STATICFILES_DIRS = (
 
 LOGIN_REDIRECT_URL = 'index'
 
-# Logger configuration from this link
-# https://djangosnippets.org/snippets/10409/
+# Logger configuration
 
-# Create a separate folder within project.
 LOGFILE_NAME = os.path.join(BASE_DIR, 'data', 'YangSpace.log')
-
-# Max size allowed for one file
-# This setting will be used by 'RotatingFileHandler'
-# I have kept maxBytes to low value.
-# Just for demonstration purpose.
-LOGFILE_SIZE = 1 * 1024
-# Log file count
+LOGFILE_SIZE = 1 * 1024 * 1024 # 1 MB
 LOGFILE_COUNT = 4
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        }
+    },
     'formatters': {
         'verbose': {
             'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s',
@@ -162,14 +158,14 @@ LOGGING = {
         },
     },
     'handlers': {
-        # Log to a text file that can be rotated by logrotate
         'logfile': {
             'level': 'DEBUG',
-            'formatter': 'verbose',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': LOGFILE_NAME,
             'maxBytes': LOGFILE_SIZE,
             'backupCount': LOGFILE_COUNT,
+            'filters': ['require_debug_false'],
+            'formatter': 'verbose',
         },
     },
     'loggers': {
