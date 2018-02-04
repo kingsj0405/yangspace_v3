@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+from django.contrib.messages import constants as messages
 from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -141,7 +142,7 @@ LOGIN_REDIRECT_URL = 'index'
 # Logger configuration
 
 LOGFILE_NAME = os.path.join(BASE_DIR, 'data', 'YangSpace.log')
-LOGFILE_SIZE = 1 * 1024 * 1024 # 1 MB
+LOGFILE_SIZE = 1 * 1024 * 1024  # 1 MB
 LOGFILE_COUNT = 4
 LOGGING = {
     'version': 1,
@@ -175,4 +176,11 @@ LOGGING = {
             'propagate': True,
         },
     },
+}
+
+# Message Tag from this link
+# https://coderwall.com/p/wekglq/bootstrap-and-django-messages-play-well-together
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
 }
