@@ -142,7 +142,7 @@ LOGIN_REDIRECT_URL = 'index'
 # https://djangosnippets.org/snippets/10409/
 
 # Create a separate folder within project.
-LOGFILE_NAME = os.path.join(BASE_DIR, 'data/YangSpace.log')
+LOGFILE_NAME = os.path.join(BASE_DIR, 'data', 'YangSpace.log')
 
 # Max size allowed for one file
 # This setting will be used by 'RotatingFileHandler'
