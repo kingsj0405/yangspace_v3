@@ -1,4 +1,10 @@
+from io import BytesIO
+from os import path, listdir
+from zipfile import ZipFile
+
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext as _
 import reversion
@@ -80,3 +86,38 @@ def delete(request, page_url=''):
         parent_url = DEFAULT_PARENT_PAGE if not page.parent else page.parent.url
         page.delete()
         return redirect('read', page_url=parent_url)
+
+
+@login_required(login_url='/accounts/login')
+def download_debug_info(request):
+    # Files (local path) to put in the .zip
+    dirname = path.join(settings.BASE_DIR, 'data')
+    filenames = [path.join(dirname, x) for x in listdir(dirname)]
+
+    # Folder name in ZIP archive which contains the above files
+    zip_subdir = "debug_info"
+    zip_filename = "%s.zip" % zip_subdir
+
+    # Open ByteIO to grab in-memory ZIP contents
+    b = BytesIO()
+
+    # The zip compressor
+    zf = ZipFile(b, "w")
+
+    for fpath in filenames:
+        # Calculate path for file in zip
+        fdir, fname = path.split(fpath)
+        zip_path = path.join(zip_subdir, fname)
+
+        # Add file, at correct path
+        zf.write(fpath, zip_path)
+
+    # Must close zip for all contents to be written
+    zf.close()
+
+    # Grab ZIP file from in-memory, make response with correct MIME-type
+    resp = HttpResponse(b.getvalue(), content_type="application/x-zip-compressed")
+    # ..and correct content-disposition
+    resp['Content-Disposition'] = 'attachment; filename=%s' % zip_filename
+
+    return resp
