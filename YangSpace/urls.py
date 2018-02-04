@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^blog/page/delete/$', blog_views.delete, name='delete'),
     url(r'^blog/page/delete/(?P<page_url>[\w\-]+)/$', blog_views.delete, name='delete'),
     url(r'^blog/download/debug_info/$', blog_views.download_debug_info, name='download-debug-info'),
+    url(r'^blog/server/backup/$', blog_views.server_backup, name='server-backup'),
     url(r'^blog/', blog_views.main, name='main'),
     url(r'^', blog_views.index, name='index'),
 ]

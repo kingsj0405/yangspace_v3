@@ -1,8 +1,10 @@
 from io import BytesIO
 from os import path, listdir
+from subprocess import run, CalledProcessError
 from zipfile import ZipFile
 
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -88,7 +90,7 @@ def delete(request, page_url=''):
         return redirect('read', page_url=parent_url)
 
 
-@login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login/')
 def download_debug_info(request):
     # Files (local path) to put in the .zip
     dirname = path.join(settings.BASE_DIR, 'data')
@@ -121,3 +123,15 @@ def download_debug_info(request):
     resp['Content-Disposition'] = 'attachment; filename=%s' % zip_filename
 
     return resp
+
+
+@login_required(login_url='/accounts/login/')
+def server_backup(request):
+    try:
+        run([settings.BASE_DIR, 'scripts', 'backup.sh'])
+        messages.success(request, _('Backup success.'))
+    except PermissionError:
+        messages.error(request, _('Backup failure. Check process permission.'))
+    except CalledProcessError:
+        messages.error(request, _('Backup failure. Check debug log for more information.'))
+    return redirect('main')
