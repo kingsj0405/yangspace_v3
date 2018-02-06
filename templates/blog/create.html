@@ -1,9 +1,14 @@
 {% extends 'blog/base.html' %}
 
 {% load i18n %}
+{% load static %}
 
 {% block title %}
     {% trans "YangSpace" %} - {% trans "Blog" %} | {% trans "Create" %}
+{% endblock %}
+
+{% block header %}
+    <script src="{% static 'js/mdeditor.js' %}"></script>
 {% endblock %}
 
 {% block content %}
