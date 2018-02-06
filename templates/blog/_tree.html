@@ -12,9 +12,9 @@
                     {% else %}
                         <i class="glyphicon glyphicon-minus"></i>
                     {% endif %}
-                    {% if page %}
+                    {% if request.resolver_match.view_name == 'read' %}
                         <a href="javascript:read_page({{ node.id }})" class="panel-title-content">{{ node.title }}</a>
-                    {% else %}
+                    {% elif request.resolver_match.view_name == 'main' %}
                         <a href="{% url 'read' page_url=node.url %}" class="panel-title-content">{{ node.title }}</a>
                     {% endif %}
                 </div>
