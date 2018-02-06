@@ -17,17 +17,27 @@
         });
     </script>
     <div class="container">
-        {% if request.user.is_authenticated %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-            {% endfor %}
-            <div class="well well-sm">
-                <a href="{% url 'server-backup' %}" role="button"
-                   class="btn btn-default">{% trans 'Backup' %}</a>
-                <a href="{% url 'download-debug-info' %}" role="button"
-                   class="btn btn-default">{% trans 'Download Debug Info' %}</a>
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-md-4">
+                {% if request.user.is_authenticated %}
+                    <div class="main-control-panel">
+                        <p><b>{% trans 'Contol Panel' %}</b></p>
+                        <a href="{% url 'server-backup' %}" role="button"
+                           class="btn btn-default">{% trans 'Backup' %}</a>
+                        <a href="{% url 'download-debug-info' %}" role="button"
+                           class="btn btn-default">{% trans 'Download Debug Info' %}</a>
+                    </div>
+                {% endif %}
+                <div class="main-current-changed">
+                    TODO: Curruntly Changed Page
+                </div>
             </div>
-        {% endif %}
-        {% include 'blog/_tree.html' %}
+            <div class="col-md-8">
+                {% include 'blog/_tree.html' %}
+            </div>
+        </div>
     </div>
 {% endblock %}
