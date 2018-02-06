@@ -147,4 +147,7 @@ def api_page(request):
         return {
             'title': page.title,
             'content': page.content,
+            'browser_title': ' '.join([_('YangSpace'), '-', _('Blog'), '|', page.title]),
+            #FIXME : There will be more good way
+            'browser_url': 'http://' + '/'.join([request.META['HTTP_HOST'], 'blog', 'read', page.url]),
         }
