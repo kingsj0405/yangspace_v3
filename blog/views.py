@@ -21,8 +21,13 @@ def index(request):
 
 
 def main(request):
+    pages = Page.objects.all()
+    current_pages = pages.order_by('-updated_at')
+    if len(current_pages) >= 5:
+        current_pages = current_pages[:5]
     return render(request, 'blog/main.html', {
-        'pages': Page.objects.all(),
+        'pages': pages,
+        'current_pages': current_pages,
     })
 
 

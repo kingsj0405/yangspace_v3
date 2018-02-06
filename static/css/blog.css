@@ -21,6 +21,18 @@ table, th, td {
     padding-right: 10px;
 }
 
+a {
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
 /* Main */
 .main-control-panel {
     border: #AAAAAA 1px solid;
@@ -29,11 +41,16 @@ table, th, td {
     margin-bottom: 10px;
 }
 
-.main-current-changed {
+.main-current-list {
     border: #AAAAAA 1px solid;
     background: white;
     padding: 10px;
     margin-bottom: 10px;
+}
+
+.main-current-page {
+    width: 100%;
+    display: inline-block;
 }
 
 /* Tree */
@@ -63,14 +80,6 @@ table, th, td {
 
 .selected {
     background: #FFEEEE;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-a:link {
-    text-decoration: none;
 }
 
 /* Page */
