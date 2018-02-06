@@ -9,6 +9,7 @@
 {% block header %}
     <script>
         $(document).ready(function () {
+            select_page("{{ page.title | escapejs }}");
             $('.page-content').convert_and_fill("{{ page.content | escapejs }}");
         });
     </script>

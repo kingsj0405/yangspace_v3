@@ -59,6 +59,16 @@ function render_editor(e) {
     };
 })(jQuery);
 
+function select_page(page_title) {
+    $('.selected').removeClass('selected');
+    $('.list-group-item').each(function () {
+        var text = $(this).children('.panel-title').children('.panel-title-content').text();
+        if (text === page_title) {
+            $(this).addClass('selected');
+        }
+    });
+}
+
 function read_page(page_id) {
     $.ajax({
         url: "/api/v1/page/read/",
@@ -69,6 +79,7 @@ function read_page(page_id) {
         success: function (result) {
             var data = result.content;
             // Change content
+            select_page(data.title);
             $('.page-title').html(data.title);
             $('.page-content').convert_and_fill(data.content);
             // Change browser title and url
@@ -86,8 +97,9 @@ $(document).ready(function () {
     init();
     init_editor();
 
-    window.onpopstate = function(e) {
-        if(e.state) {
+    window.onpopstate = function (e) {
+        if (e.state) {
+            select_page(e.state.title);
             $('.page-title').html(e.state.title);
             $('.page-content').convert_and_fill(e.state.content);
             document.title = e.state.browser_title;
