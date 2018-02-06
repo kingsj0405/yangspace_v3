@@ -1,3 +1,8 @@
+// General
+function init() {
+    showdown.setFlavor('github');
+}
+
 // Markdown Editor
 var editor_id = 'content',
     viewer_id = 'content-viewer';
@@ -44,6 +49,16 @@ function render_editor(e) {
 }
 
 // Page ajax
+(function ($) {
+    $.fn.convert_and_fill = function (markdown_text) {
+        var converter = new showdown.Converter(),
+            text = markdown_text,
+            html = converter.makeHtml(text);
+        this.html(html);
+        return this;
+    };
+})(jQuery);
+
 function read_page(page_id) {
     $.ajax({
         url: "/api/v1/page/read/",
@@ -53,15 +68,29 @@ function read_page(page_id) {
         },
         success: function (result) {
             var data = result.content;
+            // Change content
             $('.page-title').html(data.title);
-            var converter = new showdown.Converter(),
-                text = data.content,
-                html = converter.makeHtml(text);
-            $('.page-content').html(html);
+            $('.page-content').convert_and_fill(data.content);
+            // Change browser title and url
+            document.title = data.browser_title;
+            window.history.pushState({
+                'title': data.title,
+                'content': data.content,
+                'browser_title': data.browser_title,
+            }, data.browser_title, data.browser_url);
         }
     });
 }
 
 $(document).ready(function () {
+    init();
     init_editor();
+
+    window.onpopstate = function(e) {
+        if(e.state) {
+            $('.page-title').html(e.state.title);
+            $('.page-content').convert_and_fill(e.state.content);
+            document.title = e.state.browser_title;
+        }
+    }
 });
