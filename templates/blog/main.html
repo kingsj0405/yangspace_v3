@@ -24,15 +24,23 @@
             <div class="col-md-4">
                 {% if request.user.is_authenticated %}
                     <div class="main-control-panel">
-                        <p><b>{% trans 'Contol Panel' %}</b></p>
+                        <h4>{% trans 'Contol Panel' %}</h4>
                         <a href="{% url 'server-backup' %}" role="button"
                            class="btn btn-default">{% trans 'Backup' %}</a>
                         <a href="{% url 'download-debug-info' %}" role="button"
                            class="btn btn-default">{% trans 'Download Debug Info' %}</a>
                     </div>
                 {% endif %}
-                <div class="main-current-changed">
-                    TODO: Curruntly Changed Page
+                <div class="main-current-list">
+                    <h4>{% trans 'Currently changed' %}</h4>
+                    {% for page in current_pages %}
+                        <div class="main-current-page list-group-item">
+                            <a href="{% url 'read' page_url=page.url %}" class="panel-title-content">
+                                {{ page.title }}
+                                <small style="float: right">{{ page.updated_at }}</small>
+                            </a>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-md-8">
