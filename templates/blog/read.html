@@ -20,17 +20,19 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-4 col-sm-4 hidden-xs">
-            {% include 'blog/_tree.html' %}
+        <div class="col-md-8">
+            <div class="page-box">
+                <div class="page-title">
+                    {{ page.title }}
+                </div>
+                <hr>
+                <div class="page-content">
+                    {{ page.content | safe }}
+                </div>
+            </div>
         </div>
-        <div class="page-box col-md-8 col-sm-8 col-xs-12">
-            <div class="page-title">
-                {{ page.title }}
-            </div>
-            <hr>
-            <div class="page-content">
-                {{ page.content | safe }}
-            </div>
+        <div class="col-md-4">
+            {% include 'blog/_tree.html' %}
         </div>
     </div>
 {% endblock %}
