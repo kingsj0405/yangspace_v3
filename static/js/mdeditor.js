@@ -28,18 +28,23 @@ function render_viewer(e) {
             converter = new showdown.Converter(),
             html = converter.makeHtml(text);
         $viewer.html(html);
+
+        var scroll_top = $editor.scrollTop();
         $editor.hide();
         $viewer.show();
         $viewer.focus();
+        $viewer.scrollTop(scroll_top);
     }
 }
 
 function render_editor(e) {
     if (e.keyCode === 27) {
         // ESC
+        var scroll_top = $viewer.scrollTop();
         $viewer.hide();
         $editor.show();
         $editor.focus();
+        $editor.scrollTop(scroll_top);
     }
 }
 
