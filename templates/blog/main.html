@@ -7,15 +7,6 @@
 {% endblock %}
 
 {% block content %}
-    <script>
-        $(function () {
-            $('.glyphicon-chevron-right, .glyphicon-chevron-down').on('click', function () {
-                $(this)
-                    .toggleClass('glyphicon-chevron-right')
-                    .toggleClass('glyphicon-chevron-down');
-            });
-        });
-    </script>
     <div class="container">
         {% for message in messages %}
             <div class="alert alert-{{ message.tags }}">{{ message }}</div>
