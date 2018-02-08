@@ -149,10 +149,15 @@ def api_page(request):
     if request.method == 'GET':
         page_id = request.GET['page_id']
         page = get_object_or_404(Page, id=page_id)
+        host_name = request.META['HTTP_HOST']
         return {
             'title': page.title,
             'content': page.content,
             'browser_title': ' '.join([_('YangSpace'), '-', _('Blog'), '|', page.title]),
-            #FIXME : There will be more good way
-            'browser_url': 'http://' + '/'.join([request.META['HTTP_HOST'], 'blog', 'read', page.url]),
+            # FIXME : There will be more good way
+            'browser_url': 'http://' + '/'.join([host_name, 'blog', 'page', 'read', page.url, '']),
+            'create_url': 'http://' + '/'.join([host_name, 'blog', 'page', 'create', page.url, '']),
+            'update_url': 'http://' + '/'.join([host_name, 'blog', 'page', 'update', page.url, '']),
+            'delete_url': 'http://' + '/'.join([host_name, 'blog', 'page', 'delete', page.url, '']),
+            'history_url': 'http://' + '/'.join([host_name, 'admin', 'blog', 'page', str(page.id), 'history', '']),
         }
