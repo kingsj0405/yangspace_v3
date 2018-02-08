@@ -15,7 +15,6 @@ function select_page(page_title) {
             $(this).parents('.collapse').each(function () {
                 $(this).collapse("show");
                 $(this).prev().find('.glyphicon-chevron-right').each(function () {
-                    console.log("test2");
                     $(this)
                         .removeClass('glyphicon-chevron-right')
                         .addClass('glyphicon-chevron-down');
