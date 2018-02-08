@@ -1,12 +1,14 @@
 {% extends 'blog/base.html' %}
 
 {% load i18n %}
+{% load static %}
 
 {% block title %}
     {% trans "YangSpace" %} - {% trans "Blog" %} | {{ page.title }}
 {% endblock %}
 
 {% block header %}
+    <script src="{% static 'js/ajax_call.js' %}"></script>
     <script>
         $(document).ready(function () {
             select_page("{{ page.title | escapejs }}");
