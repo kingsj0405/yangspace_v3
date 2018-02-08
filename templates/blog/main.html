@@ -12,14 +12,19 @@
             <div class="alert alert-{{ message.tags }}">{{ message }}</div>
         {% endfor %}
         <div class="row">
+            <div class="col-md-8">
+                {% include 'blog/_tree.html' %}
+            </div>
             <div class="col-md-4">
                 {% if request.user.is_authenticated %}
-                    <div class="main-control-panel">
+                    <div class="control-panel">
                         <h4>{% trans 'Contol Panel' %}</h4>
                         <a href="{% url 'server-backup' %}" role="button"
                            class="btn btn-default">{% trans 'Backup' %}</a>
                         <a href="{% url 'download-debug-info' %}" role="button"
                            class="btn btn-default">{% trans 'Download Debug Info' %}</a>
+                        <a href="{% url 'create' %}" role="button"
+                           class="btn btn-default">{% trans "Create" %}</a>
                     </div>
                 {% endif %}
                 <div class="main-current-list">
@@ -33,9 +38,6 @@
                         </div>
                     {% endfor %}
                 </div>
-            </div>
-            <div class="col-md-8">
-                {% include 'blog/_tree.html' %}
             </div>
         </div>
     </div>
