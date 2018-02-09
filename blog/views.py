@@ -1,6 +1,15 @@
+from io import BytesIO
+from os import path, listdir
+from subprocess import run, CalledProcessError
+from zipfile import ZipFile
+
+from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext as _
+from django_ajax.decorators import ajax
 import reversion
 
 from .constants import *
@@ -12,8 +21,13 @@ def index(request):
 
 
 def main(request):
+    pages = Page.objects.all()
+    current_pages = pages.order_by('-updated_at')
+    if len(current_pages) >= 5:
+        current_pages = current_pages[:5]
     return render(request, 'blog/main.html', {
-        'pages': Page.objects.all(),
+        'pages': pages,
+        'current_pages': current_pages,
     })
 
 
@@ -50,6 +64,7 @@ def read(request, page_url=DEFAULT_PARENT_PAGE):
         page = get_object_or_404(Page, url=page_url)
         return render(request, 'blog/read.html', {
             'page': page,
+            'pages': Page.objects.all(),
         })
 
 
@@ -80,3 +95,68 @@ def delete(request, page_url=''):
         parent_url = DEFAULT_PARENT_PAGE if not page.parent else page.parent.url
         page.delete()
         return redirect('read', page_url=parent_url)
+
+
+@login_required(login_url='/accounts/login/')
+def download_debug_info(request):
+    # Files (local path) to put in the .zip
+    dirname = path.join(settings.BASE_DIR, 'data')
+    filenames = [path.join(dirname, x) for x in listdir(dirname)]
+
+    # Folder name in ZIP archive which contains the above files
+    zip_subdir = "debug_info"
+    zip_filename = "%s.zip" % zip_subdir
+
+    # Open ByteIO to grab in-memory ZIP contents
+    b = BytesIO()
+
+    # The zip compressor
+    zf = ZipFile(b, "w")
+
+    for fpath in filenames:
+        # Calculate path for file in zip
+        fdir, fname = path.split(fpath)
+        zip_path = path.join(zip_subdir, fname)
+
+        # Add file, at correct path
+        zf.write(fpath, zip_path)
+
+    # Must close zip for all contents to be written
+    zf.close()
+
+    # Grab ZIP file from in-memory, make response with correct MIME-type
+    resp = HttpResponse(b.getvalue(), content_type="application/x-zip-compressed")
+    # ..and correct content-disposition
+    resp['Content-Disposition'] = 'attachment; filename=%s' % zip_filename
+
+    return resp
+
+
+@login_required(login_url='/accounts/login/')
+def server_backup(request):
+    try:
+        run([settings.BASE_DIR, 'scripts', 'backup.sh'])
+        messages.success(request, _('Backup success.'))
+    except PermissionError:
+        messages.error(request, _('Backup failure. Check process permission.'))
+    except CalledProcessError:
+        messages.error(request, _('Backup failure. Check debug log for more information.'))
+    return redirect('main')
+
+
+@ajax
+def api_page(request):
+    if request.method == 'GET':
+        page_id = request.GET['page_id']
+        page = get_object_or_404(Page, id=page_id)
+        return {
+            'title': page.title,
+            'content': page.content,
+            'browser_title': ' '.join([_('YangSpace'), '-', _('Blog'), '|', page.title]),
+            # FIXME : There will be more good way
+            'browser_url': '/'.join(['', 'blog', 'page', 'read', page.url, '']),
+            'create_url': '/'.join(['', 'blog', 'page', 'create', page.url, '']),
+            'update_url': '/'.join(['', 'blog', 'page', 'update', page.url, '']),
+            'delete_url': '/'.join(['', 'blog', 'page', 'delete', page.url, '']),
+            'history_url': '/'.join(['', 'admin', 'blog', 'page', str(page.id), 'history', '']),
+        }

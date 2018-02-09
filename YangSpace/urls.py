@@ -22,6 +22,8 @@ import blog.views as blog_views
 urlpatterns = [
     # admin
     url(r'^admin/', admin.site.urls),
+    # api
+    url(r'^api/v1/page/read/$', blog_views.api_page, name='api-page'),
     # account
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'accounts/login.html'}, name='login'),
     url(r'^accounts/logout/$', auth_views.logout, {'next_page': 'index'}, name='logout'),
@@ -34,6 +36,8 @@ urlpatterns = [
     url(r'^blog/page/update/(?P<page_url>[\w\-]+)/$', blog_views.update, name='update'),
     url(r'^blog/page/delete/$', blog_views.delete, name='delete'),
     url(r'^blog/page/delete/(?P<page_url>[\w\-]+)/$', blog_views.delete, name='delete'),
+    url(r'^blog/download/debug_info/$', blog_views.download_debug_info, name='download-debug-info'),
+    url(r'^blog/server/backup/$', blog_views.server_backup, name='server-backup'),
     url(r'^blog/', blog_views.main, name='main'),
     url(r'^', blog_views.index, name='index'),
 ]

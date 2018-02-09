@@ -1,4 +1,4 @@
-# YangSpace v0.2.0
+# YangSpace v0.3.0
 [![Build Status](https://travis-ci.org/kingsj0405/YangSpace.svg?branch=master)](https://travis-ci.org/kingsj0405/YangSpace)
 
 ## Summary
@@ -26,9 +26,10 @@ Visit [yangspace.co.kr](http://yangspace.co.kr)
 
 ### Run for Production
 
-#### Reuiqrement
+#### Requirement
 
 Deploy requires following:
+- [Git](https://git-scm.com/)
 - [Docker version](https://www.docker.com/) 17.12.0-ce, build c97c6d6
 - [docker-compose](https://docs.docker.com/compose/) version 1.18.0, build 8dd22a96
 
@@ -41,9 +42,13 @@ docker exec -t $WEB_CONTAINER python manage.py dump > dump_`date +%d-%m-%Y"_"%H_
 #### Step
 
 ```bash
+git clone https://github.com/kingsj0405/YangSpace
+cd YangSpace
 cp YangSpace/settings/secret.py.template YangSpace/settings/secret.py
-# fill variables
+# fill variables on 'secret.py'
+
 docker-compose up --build
+
 # Create super user if you need
 docker exec -t $WEB_CONTAINER python manage.py createsuperuser
 ```
@@ -78,6 +83,7 @@ Followings are downloaded in `static/lib`.
 
 #### Django Pakcage
 
+- [django-ajax](https://github.com/yceruto/django-ajax)
 - [django-mptt](https://github.com/django-mptt/django-mptt)
 - [django-reversion](https://github.com/etianen/django-reversion)
 - [django-extensions](https://github.com/django-extensions/django-extensions)

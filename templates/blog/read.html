@@ -1,34 +1,50 @@
 {% extends 'blog/base.html' %}
 
 {% load i18n %}
+{% load static %}
 
 {% block title %}
     {% trans "YangSpace" %} - {% trans "Blog" %} | {{ page.title }}
 {% endblock %}
 
 {% block header %}
+    <script src="{% static 'js/ajax_call.js' %}"></script>
     <script>
         $(document).ready(function () {
-            showdown.setFlavor('github');
-            var converter = new showdown.Converter(),
-                text = "{{ page.content | escapejs }}",
-                html = converter.makeHtml(text);
-            $('.page-content').html(html);
+            select_page("{{ page.title | escapejs }}");
+            $('.page-content').convert_and_fill("{{ page.content | escapejs }}");
         });
     </script>
 {% endblock %}
 
 {% block content %}
     <div class="row">
-        <div class="page-box col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-            <div class="page-title">
-                <h1>{{ page.title }}</h1>
+        <div class="col-md-8">
+            <div class="page-box">
+                <div class="page-title">
+                    {{ page.title }}
+                </div>
                 <hr>
-                <!-- TODO: other information for page -->
+                <div class="page-content">
+                    {{ page.content | safe }}
+                </div>
             </div>
-            <div class="page-content">
-                {{ page.content | safe }}
-            </div>
+        </div>
+        <div class="col-md-4">
+            {% if request.user.is_authenticated %}
+                <div class="control-panel">
+                    <h4>{% trans 'Contol Panel' %}</h4>
+                    <a href="{% url 'create' parent_url=page.url %}" role="button"
+                       class="btn btn-default">{% trans "Create" %}</a>
+                    <a href="{% url 'update' page_url=page.url %}" role="button"
+                       class="btn btn-default">{% trans "Update" %}</a>
+                    <a href="{% url 'delete' page_url=page.url %}" role="button"
+                       class="btn btn-default">{% trans "Delete" %}</a>
+                    <a href="/admin/blog/page/{{ page.id }}/history/" role="button"
+                       class="btn btn-default">{% trans "History" %}</a>
+                </div>
+            {% endif %}
+            {% include 'blog/_tree.html' %}
         </div>
     </div>
 {% endblock %}

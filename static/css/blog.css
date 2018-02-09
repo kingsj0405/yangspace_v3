@@ -21,10 +21,8 @@ table, th, td {
     padding-right: 10px;
 }
 
-/* Main */
-.panel-title > a.panel-title-content {
-    font-weight: bold;
-    padding-left: 5px;
+a {
+    color: black;
 }
 
 a:hover {
@@ -35,15 +33,66 @@ a:link {
     text-decoration: none;
 }
 
+/* General */
+.control-panel {
+    border: #AAAAAA 1px solid;
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Main */
+.main-current-list {
+    border: #AAAAAA 1px solid;
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.main-current-page {
+    width: 100%;
+    display: inline-block;
+}
+
+/* Tree */
+.list-group {
+    margin-bottom: 10px;
+}
+
+.list-group-item {
+    border: #AAAAAA 1px solid;
+    border-radius: 0 !important;
+    background: white;
+    margin-bottom: -1px;
+    z-index: 2;
+}
+
+.panel-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 25px;
+}
+
+.panel-title > a.panel-title-content {
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.selected {
+    background: #FFEEEE;
+}
+
 /* Page */
 .page-box {
     background: #FFFFFF;
     border: #AAAAAA 1px solid;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
 }
 
 .page-title {
+    font-size: large;
     text-align: center;
 }
 
