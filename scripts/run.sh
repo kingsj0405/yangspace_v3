@@ -12,4 +12,4 @@ python manage.py compilemessages
 python manage.py collectstatic --noinput
 # runserver
 export DJANGO_SETTINGS_MODULE=YangSpace.settings.prod
-gunicorn YangSpace.wsgi -b 0.0.0.0:8000 --noreload
+gunicorn YangSpace.wsgi -b 0.0.0.0:8000
