@@ -1,5 +1,5 @@
 # YangSpace v0.3.0
-[![Build Status](https://travis-ci.org/kingsj0405/YangSpace.svg?branch=master)](https://travis-ci.org/kingsj0405/YangSpace)
+[![Build Status](https://travis-ci.org/yangspace/yangspace.svg?branch=master)](https://travis-ci.org/yangspace/yangspace)
 
 ## Summary
 
