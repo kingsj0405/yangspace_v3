@@ -1,7 +1,5 @@
-var editor_id = 'content';
-
 function init_editor() {
-    var simplemde = new SimpleMDE({ element: $('#' + editor_id)[0] });
+    var simplemde = new SimpleMDE({ element: $('#content')[0] });
 }
 
 $(document).ready(function () {
