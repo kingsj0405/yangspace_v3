@@ -8,6 +8,8 @@
 {% endblock %}
 
 {% block header %}
+    <link rel="stylesheet" href="{% static 'lib/simplemde.min.css' %}"/>
+    <script src="{% static 'lib/simplemde.min.js' %}"></script>
     <script src="{% static 'js/mdeditor.js' %}"></script>
 {% endblock %}
 
@@ -28,9 +30,6 @@
                 </div>
                 <div class="form-group">
                     <label for="content">{% trans 'Content' %}</label>
-                    <small class="text-muted">
-                        {% trans 'Press Ctrl-Enter to preview, ESC to edit' %}
-                    </small>
                     <textarea class="form-control" id="content" name="content"></textarea>
                 </div>
                 <button type="submit" class="btn btn-default">
