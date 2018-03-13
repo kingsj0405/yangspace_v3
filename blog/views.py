@@ -52,6 +52,7 @@ def create(request, parent_url=''):
         # save new page and redirect to created page
         with reversion.create_revision():
             new_page.save()
+            new_page.save()  # FIXME: I need id for making url
             reversion.set_user(request.user)
             reversion.set_comment(_("Create Page"))
         return redirect('read', page_url=new_page.url)
