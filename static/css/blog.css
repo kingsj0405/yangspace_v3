@@ -21,24 +21,24 @@ table, th, td {
     padding-right: 10px;
 }
 
-a {
-    color: black;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-a:link {
-    text-decoration: none;
-}
-
 /* General */
 .control-panel {
     border: #AAAAAA 1px solid;
     background: white;
     padding: 10px;
     margin-bottom: 10px;
+}
+
+.p-like-a a {
+    color: black;
+}
+
+.p-like-a a:hover {
+    text-decoration: none;
+}
+
+.p-like-a a:link {
+    text-decoration: none;
 }
 
 /* Main */
