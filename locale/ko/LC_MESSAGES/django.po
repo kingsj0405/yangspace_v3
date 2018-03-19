@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 01:06+0100\n"
+"POT-Creation-Date: 2018-03-19 11:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,27 +30,27 @@ msgstr "영어"
 msgid "Main"
 msgstr "대문"
 
-#: .\blog\views.py:56
+#: .\blog\views.py:57
 #, fuzzy
 #| msgid "Create"
 msgid "Create Page"
 msgstr "만들기"
 
-#: .\blog\views.py:87
+#: .\blog\views.py:88
 #, fuzzy
 #| msgid "Update"
 msgid "Update Page"
 msgstr "고치기"
 
-#: .\blog\views.py:139
+#: .\blog\views.py:140
 msgid "Backup success."
 msgstr "백업 성공."
 
-#: .\blog\views.py:141
+#: .\blog\views.py:142
 msgid "Backup failure. Check process permission."
 msgstr "백업 실패. 프로세스 권한을 확인해주세요."
 
-#: .\blog\views.py:143
+#: .\blog\views.py:144
 msgid "Backup failure. Check debug log for more information."
 msgstr "백업 실패. 자세한 정보를 위해 디버그 로그를 확인해주세요."
 
@@ -75,54 +75,53 @@ msgid "Login"
 msgstr "로그인"
 
 #: .\templates\blog\create.html:7 .\templates\blog\create.html:37
-#: .\templates\blog\main.html:27 .\templates\blog\read.html:38
+#: .\templates\blog\main.html:25 .\templates\blog\read.html:27
 msgid "Create"
 msgstr "만들기"
 
-#: .\templates\blog\create.html:20 .\templates\blog\update.html:21
+#: .\templates\blog\create.html:23 .\templates\blog\update.html:24
 msgid "Title"
 msgstr "제목"
 
-#: .\templates\blog\create.html:24
+#: .\templates\blog\create.html:27
 msgid "Parent"
 msgstr "상위항목"
 
-#: .\templates\blog\create.html:30 .\templates\blog\update.html:25
+#: .\templates\blog\create.html:33 .\templates\blog\update.html:28
 msgid "Content"
 msgstr "내용"
 
-#: .\templates\blog\create.html:32 .\templates\blog\update.html:27
-msgid "Press Ctrl-Enter to preview, ESC to edit"
-msgstr "미리보기를 위해 Ctrl-Enter, 수정을 위해 ESC를 눌러주세요."
-
-#: .\templates\blog\main.html:21 .\templates\blog\read.html:36
+#: .\templates\blog\main.html:19 .\templates\blog\read.html:25
 msgid "Contol Panel"
 msgstr "조종판"
 
-#: .\templates\blog\main.html:23
+#: .\templates\blog\main.html:21
 msgid "Backup"
 msgstr "백업"
 
-#: .\templates\blog\main.html:25
+#: .\templates\blog\main.html:23
 msgid "Download Debug Info"
 msgstr "디버그 정보 다운로드"
 
-#: .\templates\blog\main.html:31
+#: .\templates\blog\main.html:36
 msgid "Currently changed"
 msgstr "최근 변경"
 
-#: .\templates\blog\read.html:40 .\templates\blog\update.html:7
+#: .\templates\blog\read.html:29 .\templates\blog\update.html:7
 #: .\templates\blog\update.html:32
 msgid "Update"
 msgstr "고치기"
 
-#: .\templates\blog\read.html:42
+#: .\templates\blog\read.html:31
 msgid "Delete"
 msgstr "없애기"
 
-#: .\templates\blog\read.html:44
+#: .\templates\blog\read.html:33
 msgid "History"
-msgstr "기록"
+msgstr "역사 보기"
+
+#~ msgid "Press Ctrl-Enter to preview, ESC to edit"
+#~ msgstr "미리보기를 위해 Ctrl-Enter, 수정을 위해 ESC를 눌러주세요."
 
 #~ msgid "blog"
 #~ msgstr "블로그"
