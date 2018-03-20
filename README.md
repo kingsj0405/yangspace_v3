@@ -1,4 +1,4 @@
-# YangSpace v0.3.0
+# YangSpace v0.3.1
 [![Build Status](https://travis-ci.org/yangspace/yangspace.svg?branch=master)](https://travis-ci.org/yangspace/yangspace)
 
 ## Summary
@@ -79,6 +79,7 @@ Followings are downloaded in `static/lib`.
 - [Bootstrap 3.3.7](https://getbootstrap.com/docs/3.3/)
 - [Font Awesome](http://fontawesome.io/) 4.7.0
 - [jQuery](https://jquery.com/) 3.2.1
+- [SimpleMDE](https://github.com/sparksuite/simplemde-markdown-editor) 1.11.2
 - [showdown](https://github.com/showdownjs/showdown) 1.8.4
 
 #### Django Pakcage

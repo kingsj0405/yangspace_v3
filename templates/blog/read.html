@@ -18,6 +18,23 @@
 {% endblock %}
 
 {% block content %}
+    {% if request.user.is_authenticated %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="control-panel">
+                    <h4>{% trans 'Contol Panel' %}</h4>
+                    <a href="{% url 'create' parent_url=page.url %}" role="button"
+                       class="btn btn-default">{% trans "Create" %}</a>
+                    <a href="{% url 'update' page_url=page.url %}" role="button"
+                       class="btn btn-default">{% trans "Update" %}</a>
+                    <a href="{% url 'delete' page_url=page.url %}" role="button"
+                       class="btn btn-default">{% trans "Delete" %}</a>
+                    <a href="/admin/blog/page/{{ page.id }}/history/" role="button"
+                       class="btn btn-default">{% trans "History" %}</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
     <div class="row">
         <div class="col-md-8">
             <div class="page-box">
@@ -31,19 +48,6 @@
             </div>
         </div>
         <div class="col-md-4">
-            {% if request.user.is_authenticated %}
-                <div class="control-panel">
-                    <h4>{% trans 'Contol Panel' %}</h4>
-                    <a href="{% url 'create' parent_url=page.url %}" role="button"
-                       class="btn btn-default">{% trans "Create" %}</a>
-                    <a href="{% url 'update' page_url=page.url %}" role="button"
-                       class="btn btn-default">{% trans "Update" %}</a>
-                    <a href="{% url 'delete' page_url=page.url %}" role="button"
-                       class="btn btn-default">{% trans "Delete" %}</a>
-                    <a href="/admin/blog/page/{{ page.id }}/history/" role="button"
-                       class="btn btn-default">{% trans "History" %}</a>
-                </div>
-            {% endif %}
             {% include 'blog/_tree.html' %}
         </div>
     </div>
