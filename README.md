@@ -1,4 +1,4 @@
-# YangSpace v0.3.0
+# YangSpace v0.3.1
 [![Build Status](https://travis-ci.org/yangspace/yangspace.svg?branch=master)](https://travis-ci.org/yangspace/yangspace)
 
 ## Summary

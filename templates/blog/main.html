@@ -33,7 +33,7 @@
         </div>
         <div class="col-md-4">
             <div class="main-current-list p-like-a">
-                <h4>{% trans 'Currently changed' %}</h4>
+                <h4>{% trans 'Recently changed' %}</h4>
                 {% for page in current_pages %}
                     <div class="main-current-page list-group-item">
                         <a href="{% url 'read' page_url=page.url %}" class="panel-title-content">
