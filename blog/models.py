@@ -20,7 +20,8 @@ class Page(MPTTModel):
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
     def save(self, *args, **kwargs):
-        self.url = sub('[^\w\-]+', '', sub('\s+', '-', self.title.lower())) + '_' + str(self.id)
+        self.url = sub('[^\w\-]+', '', sub('\s+', '-',
+                                           self.title.lower())) + '_' + str(self.id)
         super().save(*args, **kwargs)
 
     class MPTTMeta:
