@@ -126,7 +126,8 @@ def download_debug_info(request):
     zf.close()
 
     # Grab ZIP file from in-memory, make response with correct MIME-type
-    resp = HttpResponse(b.getvalue(), content_type="application/x-zip-compressed")
+    resp = HttpResponse(
+        b.getvalue(), content_type="application/x-zip-compressed")
     # ..and correct content-disposition
     resp['Content-Disposition'] = 'attachment; filename=%s' % zip_filename
 
@@ -141,7 +142,8 @@ def server_backup(request):
     except PermissionError:
         messages.error(request, _('Backup failure. Check process permission.'))
     except CalledProcessError:
-        messages.error(request, _('Backup failure. Check debug log for more information.'))
+        messages.error(request, _(
+            'Backup failure. Check debug log for more information.'))
     return redirect('main')
 
 
