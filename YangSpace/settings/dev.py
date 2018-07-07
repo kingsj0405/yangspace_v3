@@ -8,8 +8,7 @@ SECRET_KEY = '`m%&UP_RpZzG&c9k=GDOg}Rrx?#M7p&udg$WaKb!Mgd,E4VH)_'
 DEBUG = True
 
 # For mobile access
-ALLOWED_HOSTS += ['192.168.%s.%s' % (i, j)
-                  for i in range(256) for j in range(256)]
+ALLOWED_HOSTS += ['192.168.%s.%s' % (i, j) for i in range(256) for j in range(256)]
 
 DATABASES = {
     'default': {

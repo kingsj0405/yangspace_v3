@@ -16,8 +16,7 @@ class TestPage(TestCase):
 
     def setUp(self):
         Page.objects.create(title=self.space_title, content=self.dummy_content)
-        Page.objects.create(title=self.blanket_title,
-                            content=self.dummy_content)
+        Page.objects.create(title=self.blanket_title, content=self.dummy_content)
 
     def test_url__with_space(self):
         p = Page.objects.get(title=self.space_title)
