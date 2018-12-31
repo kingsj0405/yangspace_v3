@@ -5,7 +5,10 @@
 
 Confluence-like blog.
 
-Visit [yangspace.co.kr](http://yangspace.co.kr)
+~~Visit [yangspace.co.kr](http://yangspace.co.kr)~~
+
+This repository is desecrated.  
+Blog is served with [kingsj0405.github.io](https://github.com/kingsj0405/kingsj0405.github.io) now.  
 
 ### Main Feature
 
